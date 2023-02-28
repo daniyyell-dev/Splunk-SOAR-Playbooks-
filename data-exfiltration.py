@@ -78,7 +78,7 @@ def on_start(container):
 
         notify_security_team(file_path['cef']['name'])
 
-    phantom.debug('Advanced data exfiltration investigation playbook completed.')
+    phantom.debug('exfiltration investigation playbook completed.')
 
 def quarantine_asset(asset_name):
 
