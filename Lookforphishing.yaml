@@ -1,0 +1,19 @@
+rule:
+- description: Check for phishing emails and quarantine them
+  actions:
+  - type: quarantine
+    parameters:
+      message: "Potential phishing email detected and quarantined"
+  - type: dispatch
+    destination:
+      - email: analyst@domain.com
+    parameters:
+      subject: "Potential phishing email detected"
+      message: "A potential phishing email has been detected and quarantined for review. Please investigate."
+  - type: stop
+  conditions:
+  - key: "sourcetype"
+    values:
+    - "email"
+  - key: "body"
+    pattern: "(?i)password|bank account|SSN|social security|credit card|login"
